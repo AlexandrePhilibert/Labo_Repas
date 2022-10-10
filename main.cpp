@@ -1,18 +1,19 @@
 // -----------------------------------------------------------------------------------------------
-// Demo           : Labo_02_D
 // Fichier        : Labo_02_D.cpp
 // Auteur(s)      : BEE Gianni & PHILIBERT Alexandre
 // But            : Calcul du prix d'un repas en fonction des éléments choisi parmi le menu
-// Modifications  :
+// Modifications  : NIL
 // Remarque(s)    : Les valeurs de saisi sont contrôlée dans l'intervalle [0,10].
 //                  Il est possible pour l'utilisateur de faire déborder les variables d'entrées,
 //                  par ex. -65534 = 2, dans ce cas le programme continue son exécution.
 //                  Les autres erreurs de saisies ne sont pas gérée.
+// Compilateur    : g++ 11.2.0
+// Standard C++   : C++ 20
 // -----------------------------------------------------------------------------------------------
 
 #include <iostream>     // cin et cout
 #include <cstdlib>      // EXIT_SUCCESS, EXIT_FAILURE
-#include <iomanip>      // setprecision
+#include <iomanip>      // setprecision, setw
 #include <limits>       // numeric_limits<streamsize>
 
 #define VIDER_BUFFER        cin.ignore(numeric_limits<streamsize>::max(), '\n')
@@ -21,7 +22,7 @@
 using namespace std; // Simplification std::cin <=> cin ; std::cout <=> cin
 
 int main() {
-   const unsigned int LARGEUR_COLONNE_TICKET = 9,
+   const unsigned int LARGEUR_COLONNE_TICKET = 10,
                       LARGEUR_COLONNE_PRIX = 8,
                       LARGEUR_COLONNE_COMMANDE = 18;
 
@@ -52,7 +53,7 @@ int main() {
         << left << setw(LARGEUR_COLONNE_TICKET) << "- boisson" << " : " << right << setw(LARGEUR_COLONNE_PRIX) << PRIX_BOISSON        << endl
         << left << setw(LARGEUR_COLONNE_TICKET) << "- dessert" << " : " << right << setw(LARGEUR_COLONNE_PRIX) << PRIX_DESSERT        << endl
         << left << setw(LARGEUR_COLONNE_TICKET) << "- cafe"    << " : " << right << setw(LARGEUR_COLONNE_PRIX) << PRIX_CAFE           << endl
-        << "NB : limite de saisie [0 - 10]" << endl
+        << "NB : limite de saisie [" << CHOIX_MINIMUM << " - " << CHOIX_MAXIMUM  << "]" << endl
         << endl;
 
    cout << "votre commande" << endl
@@ -113,11 +114,11 @@ int main() {
    cout << endl;
 
    // Calcul des totaux pour chaque elements
-   float totalEntree        = nombreEntree  * PRIX_ENTREE,
-         totalPlatPrincipal = nombrePlat    * PRIX_PLAT_PRINCIPAL,
-         totalBoisson       = nombreBoisson * PRIX_BOISSON,
-         totalDessert       = nombreDessert * PRIX_DESSERT,
-         totalCafe          = nombreCafe    * PRIX_CAFE;
+   float totalEntree        = (float) nombreEntree  * PRIX_ENTREE,
+         totalPlatPrincipal = (float) nombrePlat    * PRIX_PLAT_PRINCIPAL,
+         totalBoisson       = (float) nombreBoisson * PRIX_BOISSON,
+         totalDessert       = (float) nombreDessert * PRIX_DESSERT,
+         totalCafe          = (float) nombreCafe    * PRIX_CAFE;
 
    // Calcul du total du ticket
    float total = totalEntree + totalPlatPrincipal + totalBoisson + totalDessert + totalCafe;
