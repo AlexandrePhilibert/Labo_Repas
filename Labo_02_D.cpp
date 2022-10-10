@@ -61,7 +61,7 @@ int main() {
 
    cout << left;
 
-   cout << setw(LARGEUR_COLONNE_COMMANDE) << " - nbre d'entree " << " : ";
+   cout << setw(LARGEUR_COLONNE_COMMANDE) << " - nbre d'entree" << " : ";
    cin  >> nombreEntree;
    VIDER_BUFFER;
 

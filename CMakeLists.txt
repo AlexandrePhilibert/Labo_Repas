@@ -3,4 +3,4 @@ project(Labo_Repas)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Labo_Repas main.cpp)
+add_executable(Labo_Repas Labo_02_D.cpp)
